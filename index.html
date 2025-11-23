@@ -7,12 +7,19 @@
     
     <!-- ICONO DE PESTAÑA -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
-    
-    <!-- Para dispositivos Apple -->
     <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
     
     <style>
-        /* ESTILOS GENERALES */
+        /* PALETA DE COLORES ELEGANTE */
+        :root {
+            --color-primary: #2C5530;    /* Verde oscuro elegante */
+            --color-secondary: #6B8E23;  /* Verde oliva */
+            --color-accent: #D4AF37;     /* Dorado elegante */
+            --color-light: #F8F8F8;      /* Blanco roto */
+            --color-dark: #2C3E50;       /* Azul oscuro elegante */
+            --color-text: #34495E;       /* Gris azulado para texto */
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -20,10 +27,10 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--color-text);
+            background: linear-gradient(135deg, var(--color-light) 0%, #E8F5E8 100%);
             min-height: 100vh;
         }
 
@@ -36,18 +43,23 @@
         /* HEADER */
         header {
             text-align: center;
-            padding: 40px 20px;
-            color: white;
+            padding: 60px 20px;
+            color: var(--color-dark);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            margin: -20px -20px 40px -20px;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 10px 30px rgba(44, 85, 48, 0.2);
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            border: 5px solid white;
-            margin: 0 auto 20px;
-            background: #ddd;
+            border: 4px solid var(--color-accent);
+            margin: 0 auto 25px;
+            background: var(--color-light);
             overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         .profile-img img {
@@ -57,136 +69,191 @@
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: white;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
         .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* NICHO CARDS */
         .nichos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin: 50px 0;
         }
 
         .nicho-card {
             background: white;
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: 20px;
+            padding: 35px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nicho-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
         }
 
         .nicho-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
         .icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            filter: grayscale(0.2);
         }
 
         .nicho-card h2 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            font-weight: 600;
         }
 
         .nicho-card p {
-            color: #666;
-            margin-bottom: 20px;
+            color: var(--color-text);
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
 
         /* BOTONES */
         .btn {
             display: inline-block;
-            padding: 12px 30px;
-            background: #667eea;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
             color: white;
             text-decoration: none;
-            border-radius: 25px;
-            transition: background 0.3s ease;
+            border-radius: 30px;
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 15px rgba(44, 85, 48, 0.3);
         }
 
         .btn:hover {
-            background: #764ba2;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(44, 85, 48, 0.4);
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
         }
 
         /* CONTACTO */
         .contacto {
             background: white;
-            border-radius: 15px;
-            padding: 40px;
+            border-radius: 25px;
+            padding: 50px;
             text-align: center;
-            margin-top: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-top: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         .contacto h2 {
-            color: #667eea;
-            margin-bottom: 20px;
+            color: var(--color-primary);
+            margin-bottom: 25px;
+            font-size: 2.2rem;
+            font-weight: 300;
+        }
+
+        .contacto p {
+            color: var(--color-text);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .social-links {
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .social-links a {
             display: inline-block;
-            margin: 0 10px;
-            padding: 10px 20px;
-            background: #f8f9fa;
-            color: #667eea;
+            margin: 0 12px;
+            padding: 12px 25px;
+            background: var(--color-light);
+            color: var(--color-primary);
             text-decoration: none;
-            border-radius: 20px;
+            border-radius: 25px;
             transition: all 0.3s ease;
+            font-weight: 500;
+            border: 1px solid rgba(44, 85, 48, 0.1);
         }
 
         .social-links a:hover {
-            background: #667eea;
+            background: var(--color-primary);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 85, 48, 0.3);
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .nicho-card {
-                padding: 20px;
+                padding: 25px;
             }
             
             .nichos-grid {
-                gap: 20px;
+                gap: 25px;
+            }
+            
+            .contacto {
+                padding: 35px;
             }
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 10px;
+                padding: 15px;
             }
             
             header {
-                padding: 20px 10px;
+                padding: 40px 15px;
+                margin: -15px -15px 30px -15px;
             }
             
             h1 {
-                font-size: 1.8rem;
+                font-size: 1.9rem;
             }
             
             .profile-img {
-                width: 120px;
-                height: 120px;
+                width: 130px;
+                height: 130px;
+            }
+            
+            .social-links a {
+                display: block;
+                margin: 10px auto;
+                max-width: 200px;
             }
         }
 
@@ -198,26 +265,54 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(44, 62, 80, 0.9);
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
         }
 
         .modal-content {
             background: white;
-            padding: 30px;
-            border-radius: 15px;
+            padding: 40px;
+            border-radius: 20px;
             max-width: 500px;
             width: 90%;
             text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            position: relative;
         }
 
         .close {
-            float: right;
-            font-size: 1.5rem;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
             cursor: pointer;
-            color: #666;
+            color: var(--color-text);
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: var(--color-primary);
+        }
+
+        .modal-content h2 {
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .modal-content ul {
+            text-align: left;
+            margin: 25px 0;
+            padding-left: 20px;
+        }
+
+        .modal-content li {
+            margin-bottom: 12px;
+            color: var(--color-text);
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -226,12 +321,11 @@
         <!-- HEADER -->
         <header>
             <div class="profile-img">
-                <!-- Reemplaza con tu foto -->
-                <!--<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Gb3RvIHBlcmZpbDwvdGV4dD48L3N2Zz4=" alt="Foto de perfil">-->
-                <img src="img/foto.jpeg" alt="Mi Foto">                
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjhmOCIvPjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiNjZGNkY2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Gb3RvIHBlcmZpbDwvdGV4dD48L3N2Zz4=" alt="Foto de perfil">
+                <img src="img/foto.jpeg" alt="Mi perfil">
             </div>
             <h1>Bienestar Familiar Integral</h1>
-            <p class="subtitle">Uniendo fe, salud y protección para tu familia</p>
+            <p class="subtitle">Uniendo fe, salud y protección para tu familia con elegancia y propósito</p>
         </header>
 
         <!-- NICHO CARDS -->
@@ -264,12 +358,12 @@
         <!-- CONTACTO -->
         <section class="contacto">
             <h2>¿Listo para Transformar tu Vida Familiar?</h2>
-            <p>Contáctame para colaboraciones, asesorías o contenido personalizado</p>
-            <button class="btn" onclick="openModal('contacto')">Contactar</button>
+            <p>Contáctame para colaboraciones, asesorías o contenido personalizado. Juntos podemos crear un impacto positivo en las familias.</p>
+            <button class="btn" onclick="openModal('contacto')">Iniciar Conversación</button>
             
             <div class="social-links">
                 <a href="https://instagram.com/tuusuario" target="_blank">📱 Instagram</a>
-                <a href="mailto:tuemail@gmail.com">✉️ Email</a>
+                <a href="mailto:tuemail@gmail.com">✉️ Email Profesional</a>
             </div>
         </section>
     </div>
@@ -280,7 +374,7 @@
             <span class="close" onclick="closeModal('medicina')">×</span>
             <h2>🌿 Medicina Natural</h2>
             <p>Descubre el poder curativo de la naturaleza a través de:</p>
-            <ul style="text-align: left; margin: 20px 0;">
+            <ul>
                 <li>Remedios herbales tradicionales</li>
                 <li>Aromaterapia y aceites esenciales</li>
                 <li>Alimentación consciente y natural</li>
@@ -295,7 +389,7 @@
             <span class="close" onclick="closeModal('seguridad')">×</span>
             <h2>👶 Seguridad Infantil</h2>
             <p>Protege a tus hijos con estrategias efectivas:</p>
-            <ul style="text-align: left; margin: 20px 0;">
+            <ul>
                 <li>Prevención de accidentes en el hogar</li>
                 <li>Educación en seguridad personal</li>
                 <li>Primeros auxilios para padres</li>
@@ -310,7 +404,7 @@
             <span class="close" onclick="closeModal('fe')">×</span>
             <h2>🙏 Fe y Espiritualidad</h2>
             <p>Fortalece tu familia a través de la fe:</p>
-            <ul style="text-align: left; margin: 20px 0;">
+            <ul>
                 <li>Devocionales familiares prácticos</li>
                 <li>Principios bíblicos para la crianza</li>
                 <li>Oración y meditación en familia</li>
@@ -323,18 +417,18 @@
     <div id="contactoModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('contacto')">×</span>
-            <h2>📞 Contacto</h2>
+            <h2>📞 Contacto Elegante</h2>
             <p>¡Hablemos! Estoy aquí para ayudarte:</p>
-            <div style="margin: 20px 0;">
+            <div style="margin: 25px 0; line-height: 1.8;">
                 <p>📧 <strong>Email:</strong> tuemail@gmail.com</p>
                 <p>📱 <strong>Instagram:</strong> @tuusuario</p>
+                <p>⏰ <strong>Respuesta:</strong> 24-48 horas</p>
             </div>
-            <button class="btn" onclick="closeModal('contacto')">Cerrar</button>
+            <button class="btn" onclick="closeModal('contacto')">Entendido</button>
         </div>
     </div>
 
     <script>
-        // FUNCIONES PARA MODALES
         function openModal(type) {
             document.getElementById(type + 'Modal').style.display = 'flex';
         }
@@ -343,7 +437,6 @@
             document.getElementById(type + 'Modal').style.display = 'none';
         }
 
-        // CERRAR MODAL AL HACER CLIC FUERA
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
