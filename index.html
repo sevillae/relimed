@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienestar Familiar Integral</title>
+    <style>
+        /* ESTILOS GENERALES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: 0 auto 20px;
+            background: #ddd;
+            overflow: hidden;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* NICHO CARDS */
+        .nichos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .nicho-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .nicho-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .nicho-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .nicho-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* BOTONES */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+        }
+
+        /* CONTACTO */
+        .contacto {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contacto h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            background: #f8f9fa;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .nicho-card {
+                padding: 20px;
+            }
+            
+            .nichos-grid {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 20px 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .close {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <div class="profile-img">
+                <!-- Reemplaza con tu foto -->
+                <!--<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjEwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5Gb3RvIHBlcmZpbDwvdGV4dD48L3N2Zz4=" alt="Foto de perfil">-->
+                <img src="Img/Mi foto.jpeg" alt="">                
+            </div>
+            <h1>Bienestar Familiar Integral</h1>
+            <p class="subtitle">Uniendo fe, salud y protección para tu familia</p>
+        </header>
+
+        <!-- NICHO CARDS -->
+        <div class="nichos-grid">
+            <!-- MEDICINA NATURAL -->
+            <div class="nicho-card">
+                <div class="icon">🌿</div>
+                <h2>Medicina Natural</h2>
+                <p>Remedios caseros, hierbas medicinales y alternativas naturales para el cuidado de tu familia. Conoce los secretos de la naturaleza para una vida saludable.</p>
+                <button class="btn" onclick="openModal('medicina')">Saber Más</button>
+            </div>
+
+            <!-- SEGURIDAD INFANTIL -->
+            <div class="nicho-card">
+                <div class="icon">👶</div>
+                <h2>Seguridad Infantil</h2>
+                <p>Consejos prácticos y estrategias comprobadas para proteger a tus hijos en casa y fuera de ella. Prevención y cuidado integral.</p>
+                <button class="btn" onclick="openModal('seguridad')">Saber Más</button>
+            </div>
+
+            <!-- CONTENIDO RELIGIOSO -->
+            <div class="nicho-card">
+                <div class="icon">🙏</div>
+                <h2>Fe y Espiritualidad</h2>
+                <p>Contenido edificante, principios bíblicos y mensajes de fe para fortalecer el espíritu y la unión familiar desde valores cristianos.</p>
+                <button class="btn" onclick="openModal('fe')">Saber Más</button>
+            </div>
+        </div>
+
+        <!-- CONTACTO -->
+        <section class="contacto">
+            <h2>¿Listo para Transformar tu Vida Familiar?</h2>
+            <p>Contáctame para colaboraciones, asesorías o contenido personalizado</p>
+            <button class="btn" onclick="openModal('contacto')">Contactar</button>
+            
+            <div class="social-links">
+                <a href="https://instagram.com/tuusuario" target="_blank">📱 Instagram</a>
+                <a href="mailto:tuemail@gmail.com">✉️ Email</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- MODALES -->
+    <div id="medicinaModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('medicina')">×</span>
+            <h2>🌿 Medicina Natural</h2>
+            <p>Descubre el poder curativo de la naturaleza a través de:</p>
+            <ul style="text-align: left; margin: 20px 0;">
+                <li>Remedios herbales tradicionales</li>
+                <li>Aromaterapia y aceites esenciales</li>
+                <li>Alimentación consciente y natural</li>
+                <li>Terapias alternativas validadas</li>
+            </ul>
+            <button class="btn" onclick="closeModal('medicina')">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="seguridadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('seguridad')">×</span>
+            <h2>👶 Seguridad Infantil</h2>
+            <p>Protege a tus hijos con estrategias efectivas:</p>
+            <ul style="text-align: left; margin: 20px 0;">
+                <li>Prevención de accidentes en el hogar</li>
+                <li>Educación en seguridad personal</li>
+                <li>Primeros auxilios para padres</li>
+                <li>Entornos seguros y protectores</li>
+            </ul>
+            <button class="btn" onclick="closeModal('seguridad')">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="feModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('fe')">×</span>
+            <h2>🙏 Fe y Espiritualidad</h2>
+            <p>Fortalece tu familia a través de la fe:</p>
+            <ul style="text-align: left; margin: 20px 0;">
+                <li>Devocionales familiares prácticos</li>
+                <li>Principios bíblicos para la crianza</li>
+                <li>Oración y meditación en familia</li>
+                <li>Valores cristianos aplicados</li>
+            </ul>
+            <button class="btn" onclick="closeModal('fe')">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="contactoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('contacto')">×</span>
+            <h2>📞 Contacto</h2>
+            <p>¡Hablemos! Estoy aquí para ayudarte:</p>
+            <div style="margin: 20px 0;">
+                <p>📧 <strong>Email:</strong> tuemail@gmail.com</p>
+                <p>📱 <strong>Instagram:</strong> @tuusuario</p>
+            </div>
+            <button class="btn" onclick="closeModal('contacto')">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        // FUNCIONES PARA MODALES
+        function openModal(type) {
+            document.getElementById(type + 'Modal').style.display = 'flex';
+        }
+
+        function closeModal(type) {
+            document.getElementById(type + 'Modal').style.display = 'none';
+        }
+
+        // CERRAR MODAL AL HACER CLIC FUERA
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
